@@ -18,7 +18,28 @@
 						<%= attachment_image_tag book.user, :profile_image, size: "50x50", format: 'jpeg', fallback: "no_image.jpg" %></td>
 					<td><%= link_to book.title, book_path(book.id) %></td>
 					<td><%= book.body %></td>
+
+					<!-- いいねここから -->
+					<td>
+						<% if book.favorited_by?(current_user) %>
+						 <td>
+						 	<%= link_to  book_favorites_path(book.id),  method: :delete do %>
+						 	🖤 <%= book.favorites.count %>
+						 </td>
+						<% end %>
+						<% else %>
+						 <td>
+						 	<%= link_to  book_favorites_path(book.id),  method: :post do %>
+						 	🤍 <%= book.favorites.count %>
+						 </td>
+						 	<% end %>
+						<% end %>
+					</td>
+					<!-- いいねここまで -->
 					<% end %>
+
+					<!-- コメント数 -->
+					<td>コメント数：<%= book.book_comments.count %></td>
 				</tr>
 			</tbody>
 			<% end %>

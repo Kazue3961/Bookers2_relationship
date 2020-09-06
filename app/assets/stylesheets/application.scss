@@ -16,6 +16,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+.fa {
+    font-family: FontAwesome;
+}
 
 .navbar-left span {
 	font-size: 20px;
